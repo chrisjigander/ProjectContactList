@@ -98,7 +98,30 @@ public class DataController
     // UPDATE
     public static void UpdateContact(int id, string firstName, string lastName, Address address, string phoneNumber)
     {
+        SqlConnection myConnection = new SqlConnection();
 
+        myConnection.ConnectionString = connectionString;
+
+        try
+        {
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand();
+
+            myCommand.Connection = myConnection;
+
+            myCommand.CommandText = "update Contact set Firstname='" + firstName + "', '" + lastName + "', '" + address.Street + "', '" + address.City + "', '" + phoneNumber + "' where ID='" + id + "'";
+
+            int rows = myCommand.ExecuteNonQuery();
+
+        }
+        catch
+        {
+        }
+        finally
+        {
+            myConnection.Close();
+        }
     }
 
     // DELETE
