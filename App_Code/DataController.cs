@@ -18,7 +18,33 @@ public class DataController
     // CREATE
     public static void CreateContact(string firstName, string lastName, Address address, string phoneNumber)
     {
+        SqlConnection myConnection = new SqlConnection();
 
+        myConnection.ConnectionString = connectionString;
+
+        try
+        {
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand();
+
+            myCommand.Connection = myConnection;
+
+            myCommand.CommandText = "insert into Contact (Firstname, Lastname, Street, City, Phonenumber) values (" + firstName +", " + lastName +", " + address.Street +", " + address.City +", " + phoneNumber +")";
+
+            int rows = myCommand.ExecuteNonQuery();
+
+
+        }
+        catch (Exception ex)
+        {
+
+            Console.WriteLine(ex.Message);
+        }
+        finally
+        {
+            myConnection.Close();
+        }
     }
 
     // READ
