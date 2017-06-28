@@ -30,7 +30,7 @@ public class DataController
 
             myCommand.Connection = myConnection;
 
-            myCommand.CommandText = "insert into Contact (Firstname, Lastname, Street, City, Phonenumber) values (" + firstName +", " + lastName +", " + address.Street +", " + address.City +", " + phoneNumber +")";
+            myCommand.CommandText = "insert into Contacts (Firstname, Lastname, Street, City, Phonenumber) values ('" + firstName +"', '" + lastName +"', '" + address.Street +"', '" + address.City +"', '" + phoneNumber +"')";
 
             int rows = myCommand.ExecuteNonQuery();
 
@@ -76,9 +76,7 @@ public class DataController
                 string lastName = myReader["Lastname"].ToString();
                 string phoneNumber = myReader["Phonenumber"].ToString();
 
-                Address a = new Address();
-                a.Street = myReader["Street"].ToString();
-                a.City = myReader["City"].ToString();
+                Address a = new Address(myReader["Street"].ToString(), myReader["City"].ToString());
 
                 contactList.Add(new Person(Id, firstName, lastName, a, phoneNumber));
             }
