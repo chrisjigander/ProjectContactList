@@ -10,14 +10,14 @@
 </head>
 <body>
     <table id="myTable" class="table">
-        <thead>
+        <thead style="font-weight: 700">
             <tr>
                 <td>ID</td>
-                <td>Förnamn</td>
-                <td>Efternamn</td>
-                <td>Adress</td>
-                <td>Stad</td>
-                <td>Telefonnummer</td>
+                <td onclick="SortContacts(1)">Firstname</td>
+                <td onclick="SortContacts(2)">Lastname</td>
+                <td onclick="SortContacts(3)">Address</td>
+                <td onclick="SortContacts(4)">City</td>
+                <td>Phonenumber</td>
             </tr>
         </thead>
         <tbody id="myBody">
@@ -25,7 +25,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td><input type="button" value="Add Contact" onclick="AddContact();" /></td>
+                <td></td>
                 <td><input type="text" id="firstName" /></td>
                 <td><input type="text" id="lastName" /></td>
                 <td><input type="text" id="street" /></td>
@@ -34,6 +34,9 @@
             </tr>
         </tfoot>
     </table>
-    <input type="button" value="Get some JSON" onclick="GetJson();" />
+    <input type="button" value="Create Contact" onclick="AddContact();" />
+    <input type="button" value="Read Contacts" onclick="GetJson();" />
+    <input type="button" value="Update Contact" onclick="UpdateContact();" />
+    <input type="button" value="Delete Contact" onclick="DeleteContact();" />
 </body>
 </html>

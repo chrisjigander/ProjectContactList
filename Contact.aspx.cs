@@ -21,8 +21,9 @@ public partial class Contact : System.Web.UI.Page
                 string lastName = Page.Request["lastName"];
                 string street = Page.Request["street"];
                 string city = Page.Request["city"];
+                string phoneNumber = Page.Request["phoneNumber"];
 
-                DataController.CreateContact(firstName, lastName, new Address(street, city), "");
+                DataController.CreateContact(firstName, lastName, new Address(street, city), phoneNumber);
             }
         }
 
