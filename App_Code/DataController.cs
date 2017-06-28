@@ -11,7 +11,75 @@ using Newtonsoft.Json;
 /// </summary>
 public class DataController
 {
+    static string connectionString = "Data Source=localhost;Initial Catalog=ContactDB;Integrated Security=True";
+
+    public static List<Person> contactList = new List<Person>();
+
+    // CREATE
+    public static void CreateContact(string firstName, string lastName, Address address, string phoneNumber)
+    {
+
+    }
+
+    // READ
+    public static List<Person> ReadContacts()
+    {
+
+        contactList.Clear();
+
+        SqlConnection myConnection = new SqlConnection();
+
+        myConnection.ConnectionString = connectionString;
+
+        try
+        {
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand();
+
+            myCommand.Connection = myConnection;
+
+            myCommand.CommandText = "select * from Contacts";
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+            while (myReader.Read())
+            {
+                int Id = Convert.ToInt32(myReader["ID"].ToString());
+                string firstName = myReader["Firstname"].ToString();
+                string lastName = myReader["Lastname"].ToString();
+                string phoneNumber = myReader["Phonenumber"].ToString();
+
+                Address a = new Address();
+                a.Street = myReader["Street"].ToString();
+                a.City = myReader["City"].ToString();
+
+                contactList.Add(new Person(Id, firstName, lastName, a, phoneNumber));
+            }
+
+        }
+        catch
+        {
+
+        }
+        finally
+        {
+            myConnection.Close();
+        }
+
+        return contactList;
+    }
 
 
+    // UPDATE
+    public static void UpdateContact(int id, string firstName, string lastName, Address address, string phoneNumber)
+    {
 
+    }
+
+    // DELETE
+    public static void DeleteContact(int id)
+    {
+
+    }
 }

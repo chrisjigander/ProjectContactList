@@ -6,12 +6,6 @@ using System.Web;
 
 public class Address
 {
-    public string type { get; set; }
-    public string street { get; set; }
-    public string city { get; set; }
-
-    public Address()
-	{
-
-	}
+    public string Street { get; set; }
+    public string City { get; set; }
 }
