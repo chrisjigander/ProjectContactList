@@ -110,7 +110,7 @@ public class DataController
 
             myCommand.Connection = myConnection;
 
-            myCommand.CommandText = "update Contact set Firstname='" + firstName + "', '" + lastName + "', '" + address.Street + "', '" + address.City + "', '" + phoneNumber + "' where ID='" + id + "'";
+            myCommand.CommandText = "update Contacts set Firstname='" + firstName + "', '" + lastName + "', '" + address.Street + "', '" + address.City + "', '" + phoneNumber + "' where ID='" + id + "'";
 
             int rows = myCommand.ExecuteNonQuery();
 
